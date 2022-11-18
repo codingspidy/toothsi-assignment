@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { decrement, increment, removeFromCart } from "../store/cartSlice";
 import { PlusIcon, MinusIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
-
 export default function CheckoutProduct(product) {
   const { id, title, price, image, quantity } = product;
   const subTotal = (price * quantity).toFixed(2);
@@ -48,7 +47,10 @@ export default function CheckoutProduct(product) {
         </div>
       </td>
       <td className="px-6 py-4">
-        <div className="font-semibold text-blue-800">{"£"}{subTotal}</div>
+        <div className="font-semibold text-blue-800">
+          {"£"}
+          {subTotal}
+        </div>
       </td>
     </tr>
   );

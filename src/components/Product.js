@@ -8,12 +8,12 @@ import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../store/cartSlice";
 
 export default function Product({ product }) {
-  const { id, title, price, description, rating, category, image } = product;
-  let productRating = Math.round(rating.rate);
+  const { title, price, description, rating, image } = product;
   const [isChecked, setIsChecked] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [cartProduct, setCartProduct] = useState(product);
   const dispatch = useDispatch();
+  let productRating = Math.round(rating.rate);
 
   const checkboxHandler = (e) => {
     setIsChecked(e.target.checked);
@@ -33,11 +33,10 @@ export default function Product({ product }) {
   useEffect(() => {
     if (cartProduct.isChecked) {
       dispatch(addToCart(cartProduct));
+    } else if (!cartProduct.isChecked) {
+      dispatch(removeFromCart(cartProduct.id));
     }
-    else if(!cartProduct.isChecked) {
-      dispatch(removeFromCart(cartProduct.id))
-    }
-  }, [cartProduct, dispatch])
+  }, [cartProduct, dispatch]);
 
   return (
     <tr className="border-b last:border-b-0 border-gray-300">
@@ -64,7 +63,8 @@ export default function Product({ product }) {
         </div>
       </td>
       <td className="px-6 py-4 max-w-[100px] font-semibold text-gray-600">
-      {"£"}{price}
+        {"£"}
+        {price}
       </td>
       <td className="px-6 py-4 max-w-[200px]">
         <div className="flex items-center justify-end gap-3">
@@ -77,10 +77,7 @@ export default function Product({ product }) {
           <div className="w-20 h-8 bg-black flex items-center justify-center">
             <CartIcon className="text-white h-5" />
           </div>
-          <input
-            type="checkbox"
-            onChange={checkboxHandler}
-          />
+          <input type="checkbox" onChange={checkboxHandler} />
         </div>
       </td>
     </tr>

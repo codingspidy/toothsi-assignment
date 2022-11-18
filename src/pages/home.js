@@ -18,22 +18,30 @@ export default function Home({ products }) {
   const handleSearchFilter = (e) => {
     setSearchValue(e.target.value);
   };
+  const resetHandler = () => {
+    setFilter1("");
+    setFilter2("");
+  };
 
+  // Applying filters
+  useEffect(() => {
+    let result = products
+      .filter((product) => {
+        return product.category.toLowerCase() === filter1.toLowerCase();
+      })
+      .filter((product) => Math.floor(product.rating.rate) >= filter2);
+
+    setFilteredProducts(result);
+  }, [filter1, filter2, products]);
+
+  // Resetting the filters
   useEffect(() => {
     if (filter1 === "" && filter2 === "") {
       setFilteredProducts(products);
     }
   }, [filter1, filter2, products]);
 
-  useEffect(() => {
-    let result = products.filter(
-      (product) =>
-        product.category.toLowerCase() === filter1.toLowerCase() &&
-        Math.floor(product.rating.rate) >= filter2
-    );
-    setFilteredProducts(result);
-  }, [filter1, filter2, products]);
-
+  // Filtering through Search
   useEffect(() => {
     const timeout = setTimeout(() => {
       const filter = products.filter((product) => {
@@ -47,29 +55,6 @@ export default function Home({ products }) {
     }, 500);
     return () => clearTimeout(timeout);
   }, [searchValue, products]);
-
-  const resetHandler = () => {
-    setFilter1("");
-    setFilter2("");
-  };
-
-  // useEffect(() => {
-  //   let result = products
-  //     .filter((product) => {
-  //       return (
-  //         product.category.toLowerCase() === filter1.toLowerCase()
-  //       );
-  //     })
-
-  //   setFilteredProducts(result);
-  // }, [filter1, products]);
-
-  // useEffect(() => {
-  //   let result = products
-  //     .filter((product) => Math.floor(product.rating.rate) >= filter2);
-
-  //   setFilteredProducts(result);
-  // }, [filter2, products]);
 
   return (
     <div>

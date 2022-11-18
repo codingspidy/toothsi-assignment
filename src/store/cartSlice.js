@@ -8,9 +8,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, { payload }) {
       const { id } = payload;
-
       const find = state.find((item) => item.id === id);
-
       if (find) {
         return state.map((item) =>
           item.id === id
