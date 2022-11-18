@@ -5,21 +5,15 @@ This project is built with React.js and tailwindcss and reduxjs-toolkit used for
 All the features mentioned in the assignment details are implemented successfully ---
 
 ~Fetch data from dummy API and display on the homepage.
-
 ~On clicking Add to cart button, add all checked items to cart and redirect to checkout page.
-
 ~Allow users input to determine quantity of product to be added to the cart.
 
 ~Filter products on the basis of filters applied.
-
 ~Reset filters when reset button clicked.
-
 ~Filter products on the basis of user Search input.
 
 ~Allow users to increase/decrease quantity of products on the checkout page.
-
 ~Display subtotal of a product and total of whole cart.
-
 ~On clicking proceed checkout button, redirect user to thankyou page.
 
 Note: I didn't find any dummy API that returns color and inStock details of the product.
