@@ -12,18 +12,18 @@ export default function Checkout() {
       <div className="w-full lg:w-[70%]">
         <div className="overflow-x-auto scrollbar-hide">
           <table className="min-w-full table-auto bg-white shadow-xl rounded-sm py-8">
-            <thead className="text-sm font-semibold text-center border-b border-gray-300">
-              <tr className="font-medium">
-                <th className="px-6 py-4 pt-6">
+            <thead className="text-base text-center border-b border-gray-300">
+              <tr>
+                <th className="px-8 py-4 pt-6">
                   <span>Product</span>
                 </th>
-                <th className="px-6 py-4 pt-6">
+                <th className="px-8 py-4 pt-6">
                   <span>Price</span>
                 </th>
-                <th className="px-6 py-4 pt-6">
+                <th className="px-8 py-4 pt-6">
                   <span>Quantity</span>
                 </th>
-                <th className="px-6 py-4 pt-6">
+                <th className="px-8 py-4 pt-6">
                   <span>Subtotal</span>
                 </th>
               </tr>
@@ -46,7 +46,7 @@ export default function Checkout() {
       <div className="w-full lg:w-[30%] max-w-md space-y-5 mt-2 p-5 rounded-sm border border-gray-300">
         <h6 className="text-2xl">Cart totals</h6>
         <div className="flex justify-between border-b border-gray-300 py-2">
-          <div className="text-base font-medium">Subtotal</div>
+          <div className="text-sm font-medium">Subtotal</div>
           <div className="text-gray-600 text-sm">
             {"£"}
             {total}

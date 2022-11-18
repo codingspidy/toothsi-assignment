@@ -21,15 +21,18 @@ export default function CheckoutProduct(product) {
     <tr className="border-b last:border-b-0 border-gray-300 text-black">
       <td className="px-6 py-4 flex items-center gap-6">
         <button onClick={removeHandler}>
-          <XMarkIcon className="h-4 text-gray-900" />
+          <XMarkIcon className="h-[18px] text-gray-900" />
         </button>
         <img className="w-[60px] h-[60px] object-contain" src={image} alt="" />
-        <h6 className="font-medium text-sm xl:text-base line-clamp-3">
+        <h6 className="font-semibold text-sm xl:text-base line-clamp-3">
           {title}
         </h6>
       </td>
       <td className="px-6 py-4">
-        <div className="font-medium text-gray-700">{price}</div>
+        <div className="font-medium text-gray-700">
+          {"£"}
+          {price}
+        </div>
       </td>
       <td className="px-6 py-4">
         <div className="flex items-center justify-between max-w-[120px] mx-auto rounded-full border border-gray-200">
