@@ -60,7 +60,7 @@ export default function Checkout() {
           </div>
         </div>
         <Link
-          to="/success"
+          to="/thankyou"
           className="text-sm bg-blue-800 flex justify-center text-white rounded-full py-3 w-full"
         >
           PROCEED TO CHECKOUT

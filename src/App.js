@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Home from "./pages/home";
 import Checkout from "./pages/checkout";
-import Success from "./pages/success";
+import Thankyou from "./pages/thankyou";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home products={products} />}></Route>
         <Route exact path="/checkout" element={<Checkout />}></Route>
-        <Route exact path="/success" element={<Success />}></Route>
+        <Route exact path="/thankyou" element={<Thankyou />}></Route>
       </Routes>
     </Router>
   );
