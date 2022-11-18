@@ -1,6 +1,7 @@
 # Toothsi assignment❤️
 
 This project is built with React.js and tailwindcss and reduxjs-toolkit used for state management of cart.
+
 Deployed link: https://toothsi-assignment-1.vercel.app/
 
 All the features mentioned in the assignment details are implemented successfully ---
