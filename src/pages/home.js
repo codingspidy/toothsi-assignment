@@ -20,11 +20,17 @@ export default function Home({ products }) {
   };
 
   useEffect(() => {
-    let result = products
-      .filter(
-        (product) => product.category.toLowerCase() === filter1.toLowerCase()
-      )
-      .filter((product) => Math.floor(product.rating.rate) >= filter2);
+    if (filter1 === "" && filter2 === "") {
+      setFilteredProducts(products);
+    }
+  }, [filter1, filter2, products]);
+
+  useEffect(() => {
+    let result = products.filter(
+      (product) =>
+        product.category.toLowerCase() === filter1.toLowerCase() &&
+        Math.floor(product.rating.rate) >= filter2
+    );
     setFilteredProducts(result);
   }, [filter1, filter2, products]);
 
@@ -51,7 +57,7 @@ export default function Home({ products }) {
   //   let result = products
   //     .filter((product) => {
   //       return (
-  //         product.category.toLowerCase() === filter1.toLowerCase() 
+  //         product.category.toLowerCase() === filter1.toLowerCase()
   //       );
   //     })
 
@@ -65,15 +71,13 @@ export default function Home({ products }) {
   //   setFilteredProducts(result);
   // }, [filter2, products]);
 
-
-
   return (
     <div>
       <div className="">
         <header className="flex flex-col lg:flex-row gap-6 lg:gap-0 justify-between px-4 lg:px-8 py-3 mb-6 max-w-screen-2xl mx-auto">
           <div className="flex items-center gap-1 order-10 lg:-order-10">
             <select
-              className="w-32 px-4 py-2 rounded-md border border-gray-300"
+              className="w-32 px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
               onChange={filter1Handler}
               value={filter1}
             >
@@ -84,7 +88,7 @@ export default function Home({ products }) {
               <option value="Electronics">Electronics</option>
             </select>
             <select
-              className="w-32 px-4 py-2 rounded-md border border-gray-300"
+              className="w-32 px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
               onChange={filter2Handler}
               value={filter2}
             >

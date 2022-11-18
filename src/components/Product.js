@@ -29,6 +29,7 @@ export default function Product({ product }) {
       isChecked: isChecked,
     }));
   }, [isChecked, quantity]);
+
   useEffect(() => {
     if (cartProduct.isChecked) {
       dispatch(addToCart(cartProduct));
