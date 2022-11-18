@@ -54,7 +54,7 @@ export default function Product({ product }) {
           {description}
         </p>
       </td>
-      <td className="px-6 py-4 max-w-[150px]">
+      <td className="px-6 py-4 max-w-[100px]">
         <div className="flex">
           {Array(productRating)
             .fill()
@@ -63,9 +63,11 @@ export default function Product({ product }) {
             ))}
         </div>
       </td>
-      <td className="px-6 py-4 max-w-[100px] font-semibold text-gray-600">
+      <td className="px-6 py-4 max-w-[70px] font-semibold text-gray-600">
+        <div>
         {"£"}
         {price}
+        </div>
       </td>
       <td className="px-6 py-4 max-w-[200px]">
         <div className="flex items-center justify-end gap-3">

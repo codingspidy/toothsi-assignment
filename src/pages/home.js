@@ -78,10 +78,10 @@ export default function Home({ products }) {
   return (
     <div>
       <div className="">
-        <header className="flex flex-col lg:flex-row gap-6 lg:gap-0 justify-between px-4 lg:px-8 py-3 mb-6 max-w-screen-2xl mx-auto">
+        <header className="flex flex-col lg:flex-row gap-6 lg:gap-0 justify-between px-4 lg:px-8 py-6 max-w-screen-2xl mx-auto">
           <div className="flex items-center gap-1 order-10 lg:-order-10">
             <select
-              className="w-32 px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
+              className="px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
               onChange={filter1Handler}
               value={filter1}
             >
@@ -124,7 +124,7 @@ export default function Home({ products }) {
               />
             </div>
             <Link
-              className="bg-blue-500 text-sm lg:text-base px-6 py-[10px] rounded-md text-white"
+              className="bg-blue-500 hover:bg-blue-400 text-sm lg:text-base px-6 py-[10px] rounded-md text-white"
               to="/checkout"
             >
               Add to cart
@@ -132,7 +132,7 @@ export default function Home({ products }) {
           </div>
         </header>
 
-        <div className="overflow-x-auto scrollbar-hide max-w-screen-xl mx-auto">
+        <div className="overflow-x-auto scrollbar-hide">
           <table className="min-w-full table-auto bg-white shadow-xl rounded-sm py-8">
             <thead className="text-sm text-left border-b border-black bg-gray-50">
               <tr className="font-semibold">
@@ -145,7 +145,7 @@ export default function Home({ products }) {
                 <th className="px-6 py-5 w-[25%] max-w-xs">
                   <span>Description</span>
                 </th>
-                <th className="px-6 py-5 max-w-[150px]">
+                <th className="px-6 py-5 max-w-[120px]">
                   <span>Rating</span>
                 </th>
                 <th className="px-6 py-5 max-w-[100px]">
