@@ -16,7 +16,7 @@ All the features mentioned in the assignment details are implemented successfull
 ~Display subtotal of a product and total of whole cart
 ~On clicking proceed checkout button, redirect user to thankyou page.
 
-###Note: I couldn't find any dummy API that returns color and inStock details of the product.
+### Note: I couldn't find any dummy API that returns color and inStock details of the product.
 So, instead I have used product description and rating.
 Product size was also not available. Hence the second select filter is based on product rating.
 
