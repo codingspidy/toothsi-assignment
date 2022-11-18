@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Home from "./pages/home";
+import Checkout from "./pages/checkout";
+import Success from "./pages/success";
 
 function App() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/")
+      .then((res) => res.json())
+      .then((json) => setProducts(json));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Home products={products} />}></Route>
+        <Route exact path="/checkout" element={<Checkout />}></Route>
+        <Route exact path="/success" element={<Success />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
