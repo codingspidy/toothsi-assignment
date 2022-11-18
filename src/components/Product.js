@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   StarIcon,
   ShoppingCartIcon as CartIcon,
-  ArrowPathIcon as ResetIcon,
 } from "@heroicons/react/24/solid";
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../store/cartSlice";
@@ -22,6 +21,7 @@ export default function Product({ product }) {
     setQuantity(e.target.value);
   };
 
+  // Update cart product with isChecked & quantity properties.
   useEffect(() => {
     setCartProduct((prev) => ({
       ...prev,
@@ -30,6 +30,7 @@ export default function Product({ product }) {
     }));
   }, [isChecked, quantity]);
 
+  // Add/remove items to cart
   useEffect(() => {
     if (cartProduct.isChecked) {
       dispatch(addToCart(cartProduct));

@@ -25,12 +25,31 @@ export default function Home({ products }) {
 
   // Applying filters
   useEffect(() => {
-    let result = products
-      .filter((product) => {
-        return product.category.toLowerCase() === filter1.toLowerCase();
-      })
-      .filter((product) => Math.floor(product.rating.rate) >= filter2);
-
+    let result = products.filter((product) => {
+      if (
+        filter1 !== "" &&
+        filter2 !== "" &&
+        product.category.toLowerCase() === filter1.toLowerCase() &&
+        Math.floor(product.rating.rate) >= filter2
+      ) {
+        return true;
+      }
+      if (
+        filter1 !== "" &&
+        filter2 === "" &&
+        product.category.toLowerCase() === filter1.toLowerCase()
+      ) {
+        return true;
+      }
+      if (
+        filter2 !== "" &&
+        filter1 === "" &&
+        Math.floor(product.rating.rate) >= filter2
+      ) {
+        return true;
+      }
+      return false;
+    });
     setFilteredProducts(result);
   }, [filter1, filter2, products]);
 
