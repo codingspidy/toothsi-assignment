@@ -136,7 +136,7 @@ export default function Home({ products }) {
           <table className="min-w-full table-auto bg-white shadow-xl rounded-sm py-8">
             <thead className="text-sm text-left border-b border-black bg-gray-50">
               <tr className="font-semibold">
-                <th className="px-6 py-5 max-w-[70px]">
+                <th className="px-6 py-5">
                   <span>Image</span>
                 </th>
                 <th className="px-6 py-5 w-[15%] max-w-[200px]">
