@@ -14,7 +14,7 @@ const cartSlice = createSlice({
           item.id === id
             ? {
                 ...item,
-                quantity: (parseInt(item.quantity) || 0) + parseInt(payload.quantity),
+                quantity: (+item.quantity) + (+payload.quantity),
               }
             : item
         );
@@ -30,7 +30,7 @@ const cartSlice = createSlice({
         item.id === payload
           ? {
               ...item,
-              quantity: parseInt(item.quantity) + 1,
+              quantity: +item.quantity + 1,
             }
           : item
       );
@@ -40,7 +40,7 @@ const cartSlice = createSlice({
         item.id === payload
           ? {
               ...item,
-              quantity: parseInt(item.quantity) - 1,
+              quantity: +item.quantity - 1,
             }
           : item
       );

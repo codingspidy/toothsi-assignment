@@ -11,6 +11,7 @@ export default function Product({ product }) {
   const [isChecked, setIsChecked] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [cartProduct, setCartProduct] = useState(product);
+  const [inputDisabled, setInputDisabled] = useState(false);
   const dispatch = useDispatch();
   let productRating = Math.round(rating.rate);
 
@@ -34,8 +35,10 @@ export default function Product({ product }) {
   useEffect(() => {
     if (cartProduct.isChecked) {
       dispatch(addToCart(cartProduct));
+      setInputDisabled(true);
     } else if (!cartProduct.isChecked) {
       dispatch(removeFromCart(cartProduct.id));
+      setInputDisabled(false);
     }
   }, [cartProduct, dispatch]);
 
@@ -65,18 +68,26 @@ export default function Product({ product }) {
       </td>
       <td className="px-6 py-4 max-w-[70px] font-semibold text-gray-600">
         <div>
-        {"£"}
-        {price}
+          {"£"}
+          {price}
         </div>
       </td>
       <td className="px-6 py-4 max-w-[200px]">
         <div className="flex items-center justify-end gap-3">
-          <input
-            className="w-16 px-2 py-1 border border-gray-300 bg-gray-100"
-            type="number"
-            value={quantity}
-            onChange={quantityInputHandler}
-          />
+          <div className="group relative">
+            <div className={`absolute top-10 left-0 z-10 hidden w-40 shadow-lg rounded-md bg-white text-black text-xs px-4 py-3 ${inputDisabled && "group-hover:block"}`}>
+              Specify quantity before adding to cart!
+            </div>
+            <input
+              className={`w-16 px-2 py-1 border border-gray-300 bg-gray-100 ${
+                inputDisabled && "cursor-not-allowed group"
+              }`}
+              type="number"
+              disabled={inputDisabled}
+              value={quantity}
+              onChange={quantityInputHandler}
+            />
+          </div>
           <div className="w-20 h-8 bg-black flex items-center justify-center">
             <CartIcon className="text-white h-5" />
           </div>
