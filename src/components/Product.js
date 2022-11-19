@@ -75,7 +75,11 @@ export default function Product({ product }) {
       <td className="px-6 py-4 max-w-[200px]">
         <div className="flex items-center justify-end gap-3">
           <div className="group relative">
-            <div className={`absolute top-10 left-0 z-10 hidden w-40 shadow-lg rounded-md bg-white text-black text-xs px-4 py-3 ${inputDisabled && "group-hover:block"}`}>
+            <div
+              className={`absolute top-10 left-0 z-10 hidden w-40 custom-shadow rounded-md bg-gray-50 text-black text-xs px-4 py-3 ${
+                inputDisabled && "group-hover:block"
+              }`}
+            >
               Specify quantity before adding to cart!
             </div>
             <input
