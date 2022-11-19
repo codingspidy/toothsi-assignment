@@ -14,7 +14,7 @@ const cartSlice = createSlice({
           item.id === id
             ? {
                 ...item,
-                quantity: parseInt(item.quantity) + parseInt(item.quantity),
+                quantity: (parseInt(item.quantity) || 0) + parseInt(payload.quantity),
               }
             : item
         );

@@ -145,10 +145,10 @@ export default function Home({ products }) {
                 <th className="px-6 py-5 w-[25%] max-w-xs">
                   <span>Description</span>
                 </th>
-                <th className="px-6 py-5 max-w-[120px]">
+                <th className="px-6 py-5 max-w-[100px]">
                   <span>Rating</span>
                 </th>
-                <th className="px-6 py-5 max-w-[100px]">
+                <th className="px-6 py-5 max-w-[70px]">
                   <span>Price</span>
                 </th>
                 <th className="px-6 py-5 text-right max-w-[200px]">
