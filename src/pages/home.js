@@ -79,7 +79,8 @@ export default function Home({ products }) {
     <div>
       <div className="">
         <header className="flex flex-col lg:flex-row gap-6 lg:gap-0 justify-between px-4 lg:px-8 py-6 max-w-screen-2xl mx-auto">
-          <div className="flex items-center gap-1 order-10 lg:-order-10">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-1 order-10 lg:-order-10">
+          <div className="flex items-center gap-1">
             <select
               className="px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
               onChange={filter1Handler}
@@ -102,6 +103,7 @@ export default function Home({ products }) {
               <option value="2">2 & up</option>
               <option value="1">1 & up</option>
             </select>
+            </div>
             <button
               className="text-blue-500 flex items-center gap-1 ml-2"
               onClick={resetHandler}
@@ -124,7 +126,7 @@ export default function Home({ products }) {
               />
             </div>
             <Link
-              className="bg-blue-500 hover:bg-blue-400 text-sm lg:text-base px-6 py-[10px] rounded-md text-white"
+              className="bg-blue-500 hover:bg-blue-400 text-sm lg:text-base px-4 lg:px-6 py-[10px] rounded-md text-white"
               to="/checkout"
             >
               Add to cart
