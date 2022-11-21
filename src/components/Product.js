@@ -17,6 +17,7 @@ export default function Product({ product }) {
 
   const checkboxHandler = (e) => {
     setIsChecked(e.target.checked);
+    console.log(e.target)
   };
   const quantityInputHandler = (e) => {
     setQuantity(e.target.value);
@@ -37,7 +38,7 @@ export default function Product({ product }) {
       dispatch(addToCart(cartProduct));
       setInputDisabled(true);
     } else if (!cartProduct.isChecked) {
-      dispatch(removeFromCart(cartProduct.id));
+      // dispatch(removeFromCart(cartProduct.id));
       setInputDisabled(false);
     }
   }, [cartProduct, dispatch]);

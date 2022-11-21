@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Home from "./pages/home";
 import Checkout from "./pages/checkout";
 import Thankyou from "./pages/thankyou";
+import { useSelector } from "react-redux";
 
 function App() {
   const [products, setProducts] = useState([]);
