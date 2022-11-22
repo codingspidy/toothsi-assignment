@@ -44,6 +44,7 @@ export default function Checkout() {
                 </thead>
                 <tbody>
                   {cartItems.map((item) => (
+                    (item.quantity > 0) &&
                     <CheckoutProduct
                       key={item.id}
                       id={item.id}

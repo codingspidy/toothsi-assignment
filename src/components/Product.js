@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   StarIcon,
   ShoppingCartIcon as CartIcon,
@@ -14,10 +14,12 @@ export default function Product({ product }) {
   const [inputDisabled, setInputDisabled] = useState(false);
   const dispatch = useDispatch();
   let productRating = Math.round(rating.rate);
+  const [eventCreator, setEventCreator] = useState();
+  const inputRef = useRef(null);
 
   const checkboxHandler = (e) => {
     setIsChecked(e.target.checked);
-    console.log(e.target)
+    setEventCreator(e.target);
   };
   const quantityInputHandler = (e) => {
     setQuantity(e.target.value);
@@ -37,8 +39,8 @@ export default function Product({ product }) {
     if (cartProduct.isChecked) {
       dispatch(addToCart(cartProduct));
       setInputDisabled(true);
-    } else if (!cartProduct.isChecked) {
-      // dispatch(removeFromCart(cartProduct.id));
+    } else if (!cartProduct.isChecked && eventCreator === inputRef.current) {
+      dispatch(removeFromCart(cartProduct.id));
       setInputDisabled(false);
     }
   }, [cartProduct, dispatch]);
@@ -96,7 +98,7 @@ export default function Product({ product }) {
           <div className="w-20 h-8 bg-black flex items-center justify-center">
             <CartIcon className="text-white h-5" />
           </div>
-          <input type="checkbox" onChange={checkboxHandler} />
+          <input ref={inputRef} type="checkbox" onChange={checkboxHandler} />
         </div>
       </td>
     </tr>
