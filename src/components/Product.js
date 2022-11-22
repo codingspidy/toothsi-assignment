@@ -4,7 +4,7 @@ import {
   ShoppingCartIcon as CartIcon,
 } from "@heroicons/react/24/solid";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../store/cartSlice";
+import { addToCart, reduceCart, removeFromCart } from "../store/cartSlice";
 
 export default function Product({ product }) {
   const { title, price, description, rating, image } = product;
@@ -40,7 +40,7 @@ export default function Product({ product }) {
       dispatch(addToCart(cartProduct));
       setInputDisabled(true);
     } else if (!cartProduct.isChecked && eventCreator === inputRef.current) {
-      dispatch(removeFromCart(cartProduct.id));
+      dispatch(reduceCart(cartProduct));
       setInputDisabled(false);
     }
   }, [cartProduct, dispatch]);
