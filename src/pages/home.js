@@ -49,14 +49,23 @@ export default function Home({ products }) {
         ) {
           return true;
         }
+        if (
+          filter2 === "" &&
+          filter1 === "" &&
+          Object.values(product)
+            .join("")
+            .toLowerCase()
+            .includes(searchValue.trim().toLowerCase())
+        ) {
+          return true;
+        }
         return false;
       })
       .filter((product) => {
-        console.log(product)
         return Object.values(product)
           .join("")
           .toLowerCase()
-          .includes(searchValue.toLowerCase());
+          .includes(searchValue.trim().toLowerCase());
       });
 
     setFilteredProducts(result);
