@@ -25,33 +25,42 @@ export default function Home({ products }) {
 
   // Applying filters
   useEffect(() => {
-    let result = products.filter((product) => {
-      if (
-        filter1 !== "" &&
-        filter2 !== "" &&
-        product.category.toLowerCase() === filter1.toLowerCase() &&
-        Math.floor(product.rating.rate) >= filter2
-      ) {
-        return true;
-      }
-      if (
-        filter1 !== "" &&
-        filter2 === "" &&
-        product.category.toLowerCase() === filter1.toLowerCase()
-      ) {
-        return true;
-      }
-      if (
-        filter2 !== "" &&
-        filter1 === "" &&
-        Math.floor(product.rating.rate) >= filter2
-      ) {
-        return true;
-      }
-      return false;
-    });
+    let result = products
+      .filter((product) => {
+        if (
+          filter1 !== "" &&
+          filter2 !== "" &&
+          product.category.toLowerCase() === filter1.toLowerCase() &&
+          Math.floor(product.rating.rate) >= filter2
+        ) {
+          return true;
+        }
+        if (
+          filter1 !== "" &&
+          filter2 === "" &&
+          product.category.toLowerCase() === filter1.toLowerCase()
+        ) {
+          return true;
+        }
+        if (
+          filter2 !== "" &&
+          filter1 === "" &&
+          Math.floor(product.rating.rate) >= filter2
+        ) {
+          return true;
+        }
+        return false;
+      })
+      .filter((product) => {
+        console.log(product)
+        return Object.values(product)
+          .join("")
+          .toLowerCase()
+          .includes(searchValue.toLowerCase());
+      });
+
     setFilteredProducts(result);
-  }, [filter1, filter2, products]);
+  }, [filter1, filter2, products, searchValue]);
 
   // Resetting the filters
   useEffect(() => {
@@ -60,49 +69,34 @@ export default function Home({ products }) {
     }
   }, [filter1, filter2, products]);
 
-  // Filtering through Search
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const filter = products.filter((product) => {
-        return Object.values(product)
-          .join("")
-          .toLowerCase()
-          .includes(searchValue.toLowerCase());
-      });
-
-      setFilteredProducts(filter);
-    }, 500);
-    return () => clearTimeout(timeout);
-  }, [searchValue, products]);
-
   return (
     <div>
       <div className="">
         <header className="flex flex-col lg:flex-row gap-6 lg:gap-0 justify-between px-4 lg:px-8 py-6 max-w-screen-2xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-1 order-10 lg:-order-10">
-          <div className="flex items-center gap-1">
-            <select
-              className="px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
-              onChange={filter1Handler}
-              value={filter1}
-            >
-              <option value="">All</option>
-              <option value="Men's clothing">Men's clothing</option>
-              <option value="Women's clothing">Women's clothing</option>
-              <option value="Jewelery">Jewellery</option>
-              <option value="Electronics">Electronics</option>
-            </select>
-            <select
-              className="w-32 px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
-              onChange={filter2Handler}
-              value={filter2}
-            >
-              <option value="">Rating</option>
-              <option value="4">4 & up</option>
-              <option value="3">3 & up</option>
-              <option value="2">2 & up</option>
-              <option value="1">1 & up</option>
-            </select>
+            <div className="flex items-center gap-1">
+              <select
+                className="px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
+                onChange={filter1Handler}
+                value={filter1}
+              >
+                <option value="">All</option>
+                <option value="Men's clothing">Men's clothing</option>
+                <option value="Women's clothing">Women's clothing</option>
+                <option value="Jewelery">Jewellery</option>
+                <option value="Electronics">Electronics</option>
+              </select>
+              <select
+                className="w-32 px-4 py-2 rounded-md border border-gray-300 cursor-pointer"
+                onChange={filter2Handler}
+                value={filter2}
+              >
+                <option value="">Rating</option>
+                <option value="4">4 & up</option>
+                <option value="3">3 & up</option>
+                <option value="2">2 & up</option>
+                <option value="1">1 & up</option>
+              </select>
             </div>
             <button
               className="text-blue-500 flex items-center gap-1 ml-2"
