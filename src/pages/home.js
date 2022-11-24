@@ -35,27 +35,23 @@ export default function Home({ products }) {
         ) {
           return true;
         }
-        if (
+       else if (
           filter1 !== "" &&
           filter2 === "" &&
           product.category.toLowerCase() === filter1.toLowerCase()
         ) {
           return true;
         }
-        if (
+        else if (
           filter2 !== "" &&
           filter1 === "" &&
           Math.floor(product.rating.rate) >= filter2
         ) {
           return true;
         }
-        if (
+        else if (
           filter2 === "" &&
-          filter1 === "" &&
-          Object.values(product)
-            .join("")
-            .toLowerCase()
-            .includes(searchValue.trim().toLowerCase())
+          filter1 === "" 
         ) {
           return true;
         }
@@ -65,18 +61,18 @@ export default function Home({ products }) {
         return Object.values(product)
           .join("")
           .toLowerCase()
-          .includes(searchValue.trim().toLowerCase());
+          .includes(searchValue.toLowerCase());
       });
 
     setFilteredProducts(result);
   }, [filter1, filter2, products, searchValue]);
 
   // Resetting the filters
-  useEffect(() => {
-    if (filter1 === "" && filter2 === "") {
-      setFilteredProducts(products);
-    }
-  }, [filter1, filter2, products]);
+  // useEffect(() => {
+  //   if (filter1 === "" && filter2 === "") {
+  //     setFilteredProducts(products);
+  //   }
+  // }, [filter1, filter2, products]);
 
   return (
     <div>
